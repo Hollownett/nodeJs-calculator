@@ -15,6 +15,7 @@
     "@babel/node": "^7.10.5",
     "@babel/plugin-syntax-class-properties": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
+    "chance": "^1.1.7",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "kill-port": "^1.6.1",

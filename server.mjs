@@ -1,8 +1,10 @@
 import express from 'express'
 import cors from 'cors'
 import calculatorRoute from './routes/calculator.mjs'
+import Chance from 'chance'
 
 const app = express()
+const chance = new Chance();
 
 const PORT = process.env.PORT || '3000'
 app.set('PORT', PORT)
@@ -17,6 +19,16 @@ app.use(cors())
 app.use(logger)
 app.use(express.json())
 
+app.get('/user', (req, res) => {
+  const randUser = {
+    name: chance.name(),
+    lastname: chance.last(),
+    status: chance.string(),
+    location: chance.address(),
+    avatar:  chance.avatar({protocol: 'https'}),
+  }
+  res.send(randUser)
+})
 app.use('/calculator', calculatorRoute)
 
 app.use('*', (req, res) => {
